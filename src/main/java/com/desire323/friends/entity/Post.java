@@ -10,6 +10,7 @@ public class Post {
     @Id
     private Long id;
     private String content;
+    private String theme;
 
     @Relationship(type = "POSTED", direction = Relationship.Direction.INCOMING)
     private Person author;
@@ -30,6 +31,12 @@ public class Post {
         this.content = content;
     }
 
+    public String getTheme() {
+        return this.theme;
+    }
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
     public Person getAuthor() {
         return author;
     }
