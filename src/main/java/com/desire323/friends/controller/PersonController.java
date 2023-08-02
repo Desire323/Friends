@@ -1,5 +1,6 @@
 package com.desire323.friends.controller;
 
+import com.desire323.friends.DTO.PersonDTO;
 import com.desire323.friends.entity.Person;
 import com.desire323.friends.service.PersonService;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,8 @@ public class PersonController {
     }
 
     @GetMapping("/{id}")
-    public Person getPerson(@PathVariable String id) {
-        return personService.findById(id);
+    public PersonDTO getPerson(@PathVariable String id) {
+        return new PersonDTO(personService.findById(id));
     }
 
     @PostMapping
@@ -36,8 +37,8 @@ public class PersonController {
     }
 
     @GetMapping("/{id}/friends")
-    public ResponseEntity<List<Person>> getFriends(@PathVariable String id) {
-        List<Person> friends = personService.findFriends(id);
+    public ResponseEntity<List<PersonDTO>> getFriends(@PathVariable String id) {
+        List<PersonDTO> friends = personService.findFriends(id).stream().map(PersonDTO::new).toList();
         return ResponseEntity.ok(friends);
     }
 
