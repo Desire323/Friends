@@ -1,5 +1,6 @@
 package com.desire323.friends.entity;
 
+import com.desire323.friends.DTO.PersonDTO;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
@@ -22,6 +23,14 @@ public class Person {
     private List<Post> posts;
 
     public Person() {
+        this.friends = new ArrayList<>();
+        this.posts = new ArrayList<>();
+    }
+
+    public Person(PersonDTO personDTO) {
+        this.id = personDTO.getId();
+        this.firstname = personDTO.getFirstname();
+        this.lastname = personDTO.getLastname();
         this.friends = new ArrayList<>();
         this.posts = new ArrayList<>();
     }
