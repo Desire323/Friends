@@ -28,6 +28,11 @@ public class PersonController {
         return new PersonDTO(personService.findById(id));
     }
 
+    @GetMapping("/{id}/friends-count")
+    public ResponseEntity<Integer> getFriendsCount(@PathVariable String id) {
+        return ResponseEntity.ok(personService.findFriends(id).size());
+    }
+
     @PostMapping
     public ResponseEntity<Person> createPerson(@RequestBody Person person) {
         personService.save(person);
