@@ -34,7 +34,8 @@ public class PersonController {
     }
 
     @PostMapping
-    public ResponseEntity<Person> createPerson(@RequestBody Person person) {
+    public ResponseEntity<Person> createPerson(@RequestBody PersonDTO personDTO) {
+        Person person = new Person(personDTO);
         personService.save(person);
         return ResponseEntity.ok(person);
     }
@@ -51,7 +52,6 @@ public class PersonController {
         List<PersonDTO> friends = personService.findFriends(id).stream().map(PersonDTO::new).toList();
         return ResponseEntity.ok(friends);
     }
-
 
 }
 
