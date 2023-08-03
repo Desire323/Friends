@@ -35,7 +35,6 @@ public class PersonService {
         friend.getFriends().add(currentUser);
         save(currentUser);
         save(friend);
-//        return currentUser;
     }
 
     @Transactional(readOnly = true)
@@ -47,5 +46,9 @@ public class PersonService {
     @Transactional(readOnly = true)
     public List<Person> findFriendsOfFriends(String userId) {
         return personRepository.findFriendsOfFriends(userId);
+    }
+
+    public List<Person> findAll() {
+        return personRepository.findAll();
     }
 }

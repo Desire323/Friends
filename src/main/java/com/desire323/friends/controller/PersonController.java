@@ -18,6 +18,11 @@ public class PersonController {
         this.personService = personService;
     }
 
+    @GetMapping
+    public List<PersonDTO> getAllPersons() {
+        return personService.findAll().stream().map(PersonDTO::new).toList();
+    }
+
     @GetMapping("/{id}")
     public PersonDTO getPerson(@PathVariable String id) {
         return new PersonDTO(personService.findById(id));
