@@ -34,9 +34,11 @@ public class Post {
     public String getTheme() {
         return this.theme;
     }
+
     public void setTheme(String theme) {
         this.theme = theme;
     }
+
     public Person getAuthor() {
         return author;
     }
