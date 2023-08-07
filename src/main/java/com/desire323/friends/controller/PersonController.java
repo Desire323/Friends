@@ -52,6 +52,5 @@ public class PersonController {
         List<PersonDTO> friends = personService.findFriends(id).stream().map(PersonDTO::new).toList();
         return ResponseEntity.ok(friends);
     }
-
 }
 
