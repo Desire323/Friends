@@ -24,7 +24,7 @@ services:
       SPRING_PROFILES_ACTIVE: prod
       SERVICE_REGISTRY_URL: http://service-registry:8761/eureka
     ports:
-      - "8888:8080"
+      - "5003:8080"
     depends_on:
       - neo4j-db
     networks:
